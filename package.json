@@ -1,0 +1,32 @@
+{
+  "name": "teamproj",
+  "version": "1.0.0",
+  "description": "Stuff to read",
+  "main": "server.js",
+  "scripts": {
+    "test": "LaunchKrishon",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/governorx/DatabasesTeamProj.git"
+  },
+  "keywords": [
+    "MySQ",
+    "Music",
+    "Local",
+    "Artist",
+    "Venue",
+    "Hampton"
+  ],
+  "author": "Team Krishon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/governorx/DatabasesTeamProj/issues"
+  },
+  "homepage": "https://github.com/governorx/DatabasesTeamProj#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
