@@ -47,14 +47,58 @@ con.connect(function(err) {
     console.log(result);
   });
 });
-//TODO(tauren) BAND ONE ARTIRST OR > 1 ARTIST
-//TODO(tauren) list all bands
 
-//Page Request
+//Sending Data to Pages is fake now, first line exhibits long term idea
+
+//TODO(tauren) list all bands
+app.get('/DATA/HOME'function (req, res, next) {
+  //res.send(/*SELECT * FROM Shows> 1 */);
+});
+
+//TODO(tauren) BAND ONE ARTIRST OR > 1 ARTIST
+app.get('/DATA/SINGLES', function (req, res, next) {
+  //res.send(/*SELECT * FROM BAND WHERE ARTIST IS 1 */);
+});
+app.get('/DATA/BANDS', function (req, res, next) {
+  //res.send(/*SELECT * FROM BAND WHERE ARTIST > 1 */);
+});
+
+//TODO(anyone) Get Performances by genre
+app.get('/DATA/ROCK', function (req, res, next) {
+  //res.send(/*SELECT * FROM BAND WHERE GENRE IS ROCK) */);
+});
+app.get('/DATA/HIPHOP', function (req, res, next) {
+  //res.send(/*SELECT * FROM BAND WHERE GENRE IS HIPHOP) */);
+});
+app.get('/DATA/ELECTRONIC', function (req, res, next) {
+  //res.send(/*SELECT * FROM BAND WHERE GENRE IS ELECTRONIC) */);
+});
+
+//Sending Pages
 app.get('/', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/Home.html");
 });
 
+app.get('/Bands', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/Venues.html");
+});
+
+app.get('/Artists', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/Venues.html");
+});
+
+app.get('/Bands', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/Venues.html");
+});
+
+app.get('/Singles', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/Venues.html");
+});
+
+
+app.get('/Genres', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/Venues.html");
+});
 app.get('/Venues', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/Venues.html");
 });
