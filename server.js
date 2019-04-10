@@ -55,7 +55,7 @@ con.connect(function(err) {
 //Sending Data to Pages is fake now, first line exhibits long term idea
 
 //TODO(tauren) list all bands
-app.get('/DATA/HOME'function (req, res, next) {
+app.get('/DATA/HOME', function (req, res, next) {
   //res.send(/*SELECT * FROM Shows> 1 */);
 });
 
