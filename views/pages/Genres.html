@@ -17,7 +17,6 @@
             <li><a href="/">Home</a></li>
             <li class="active"  ><a href="/Venues">Venues</a></li>
             <li><a href="/Artists">Artists</a></li>
-            <li><a href="/Genres">Genres</a></li>
             <li><a href="/About">About</a></li>
             </ul>
         </div>
@@ -33,18 +32,17 @@
         </div>
   </body>
   <script>
-    //feaux data
-    data = {
-        var1: "<h1>Hard Rock Hollywood</h1><br><h3>One of Hollywoods premier rock locations. History and Modernity Clash at this age old venue for groundbreaking performances</h3>",
-        var2: "<h1>The Benedum </h1><br><h3>A pittsburgh theater, have to fill the list</h3>",
-        var3: "<h1>Madison Square Garden </h1><h3> New Yorks Most Expensivist Venue, ball on your friends or save your money</h3>",
+    genere = {
+        var1: "<h1>Rock</h1><br><img class='center-block' src='https://pbcdn1.podbean.com/imglogo/ep-logo/pbblog2947900/Rock.jpg'  alt=Lamp width=70% height=70%>",
+        var2: "<h1>Hiphop</h1><br><img class='center-block' src='https://s26162.pcdn.co/wp-content/uploads/2019/03/shabazz-hiphop_1024.jpg' alt=Lamp width=70% height=70%>",
+        var3: "<h1>Electronic</h1><br><img class='center-block' src='http://www.canadien.biz/wp-content/uploads/2012/09/electronic-canadien.jpg'  alt=Lamp width=70% height=70%>",
     }
     var Venues = document.getElementById("Venues");
-    for(var element in data){
+    for(var element in genere){
         var newJim = document.createElement('div');
         newJim.clasName = "container-fluid";
         newJim.style = " text-align: center; padding-top: 200px;";
-        newJim.innerHTML = data[element];
+        newJim.innerHTML = genere[element];
         Venues.append(newJim);
     }
 

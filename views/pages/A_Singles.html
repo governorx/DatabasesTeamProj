@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Imports -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8"> 
+  </head>
+  <nav class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#">Krishon</a>
+            </div>
+            <ul class="nav navbar-nav bg-light">
+            <li><a href="#">Home</a></li>
+            <li><a href="/Venues">Venues</a></li>
+            <li class="active"><a href="/Artists">Artists</a></li>
+            <li><a href="/Genres">Genres</a></li>
+            <li><a href="/About">About</a></li>
+            </ul>
+        </div>
+    </nav> 
+  <body>
+    <div style = "background-color: azure">
+    <div class="container-fluid"  id = "ArtistContainer" width = 100%  style="text-align: center; padding-top: 70px">
+            <div class="jumbotron">
+              <h1>K R I S H O N</h1>      
+              <p>Find Local Concerts Without the Hassle.</p>
+            </d iv>    
+    </div>  
+    </div>
+
+  </body>
+  <script>
+    //feaux data later will be gotten using request
+    data = {
+        var1: "highHello <br> <img class='center-block' src='https://www.billboard.com/files/styles/900_wide/public/media/Joy-Division-Unknown-Pleasures-album-covers-billboard-1000x1000.jpg' alt=Lamp width=70% height=70%'>", 
+        var2: "highHello <br> <img class='center-block' src='http://paperlief.com/images/nirvana-nevermind-album-cover-wallpaper-2.jpg' alt=Lamp1 width=70% height=70%'>", 
+        var3: "highHello <br> <img class='center-block' src='https://crank11.news/wp-content/uploads/sites/3/2017/09/bbdf945787a99d48cb840a1038da6d4e.jpg' alt=Lamp2 width=70% height=70%'>",
+        var4: "highBybey <br> <img class='center-block' src='https://i.pinimg.com/originals/b4/75/00/b4750046d94fed05d00dd849aa5f0ab7.jpg' alt=Lamp3 width=70% height=70%'>",
+        var5: "WhamDramThankYouMaam <br> <img class='center-block' src='https://m.media-amazon.com/images/I/A1mwfoo5EtL._SS500_.jpg' alt=Lamp4 width=70% height=70%'>"
+        }
+    var AC = document.getElementById('ArtistContainer');
+    var newRow = document.createElement('div');
+    newRow.className = "container-fluid";
+    var i = 0;
+    while(i < 50){
+        for(var element in data){
+            var newCol = document.createElement('div');
+            newCol.style = i%2 == 0? "background-color:lavender;": "background-color:lavenderblush;";
+            newCol.className = "col-lg-4";
+            newCol.innerHTML = data[element];
+            newRow.append(newCol)
+
+            if(++i % 3 == 0 ){
+                AC.append(newRow);
+                newRow = document.createElement('div');
+                newRow.className = "container-fluid";
+            }
+        }
+    }
+  </script>
+</html>
