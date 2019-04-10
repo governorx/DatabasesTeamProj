@@ -16,6 +16,10 @@ var con = mysql.createConnection({
   database: "test"
 });
 
+// TO ADD THE DATABASE:: RUN THIS COMMAND ON .sql FILE IN GIT
+//mysql -u root -p test < test_dump.sql
+
+
 /* to Get all of this to run
 *1. Comment out database: test up there
 *2. con.query("CREATE DATABASE test", function (err, result) {
