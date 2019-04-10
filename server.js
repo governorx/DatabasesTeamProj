@@ -3,8 +3,12 @@
 //if you have run "mysql -u root -p"
 //"use test"
 //"show tables;"
-var mysql = require(`mysql`);
 
+//Requirements and initiation.
+var port = process.env.PORT || 3000;
+var mysql = require('mysql');
+var express = require('express');
+const app = express();
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -37,7 +41,7 @@ var con = mysql.createConnection({
 con.connect(function(err) {
   if (err) console.log(err);
   console.log("Connected!");
-  var sql = "Create Table `Show`(`SHID` INT, `Location` VARCHAR(255), `Time` VARCHAR(255), `Price` INT, `Promoter` INT, `ATT_COUNT` INT, `Explicit` VARCHAR(255), `Venue` INT, `Opener` INT, `Headlines` INT, `Set` VARCHAR(255))"
+  var sql = "Select * from `Show`"
   con.query(sql, function (err, result) {
     if (err) console.log(err);
     console.log(result);
@@ -45,3 +49,17 @@ con.connect(function(err) {
 });
 //TODO(tauren) BAND ONE ARTIRST OR > 1 ARTIST
 //TODO(tauren) list all bands
+
+//Page Rquest
+app.get('/', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/Home.html");
+});
+
+app.get('/Venues', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/Venues.html");
+});
+
+//Server Run
+app.listen(port, function(){
+  console.log("Krishon is on the run you better go get him.." );
+});

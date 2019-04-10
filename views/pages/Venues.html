@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Imports -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8"> 
+  </head>
+  <nav class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#">Krishon</a>
+            </div>
+            <ul class="nav navbar-nav bg-light">
+            <li><a href="/">Home</a></li>
+            <li class="active"  ><a href="/Venues">Venues</a></li>
+            <li><a href="/Artists">Artists</a></li>
+            <li><a href="/About">About</a></li>
+            </ul>
+        </div>
+    </nav> 
+  <body>
+    <div style = "background-color: azure">
+                <div class="jumbotron" style = "text-align: center; background-color: azure">
+                  <h1>VENUES</h1>      
+                </div> 
+                <div id = "Venues"> 
+
+                </div>   
+        </div>
+  </body>
+  <script>
+    //feaux data
+    data = {
+        var1: "<h1>Hard Rock Hollywood</h1><br><h3>One of Hollywoods premier rock locations. History and Modernity Clash at this age old venue for groundbreaking performances</h3>",
+        var2: "<h1>The Benedum </h1><br><h3>A pittsburgh theater, have to fill the list</h3>",
+        var3: "<h1>Madison Square Garden </h1><h3> New Yorks Most Expensivist Venue, ball on your friends or save your money</h3>",
+    }
+    var Venues = document.getElementById("Venues");
+    for(var element in data){
+        var newJim = document.createElement('div');
+        newJim.clasName = "container-fluid";
+        newJim.style = " text-align: center; padding-top: 200px;";
+        newJim.innerHTML = data[element];
+        Venues.append(newJim);
+    }
+
+  </script>
+</html>
