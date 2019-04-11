@@ -6,7 +6,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
   </head>
   <nav class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container-fluid">
@@ -15,20 +15,21 @@
             </div>
             <ul class="nav navbar-nav bg-light">
             <li><a href="/">Home</a></li>
-            <li class="active"  ><a href="/Venues">Venues</a></li>
+            <li><a href="/Venues">Venues</a></li>
             <li><a href="/Artists">Artists</a></li>
+            <li class="active" ><a href="Genres">Genres</a></li>
             <li><a href="/About">About</a></li>
             </ul>
         </div>
-    </nav> 
+    </nav>
   <body>
     <div style = "background-color: azure">
                 <div class="jumbotron" style = "text-align: center; background-color: azure">
-                  <h1>VENUES</h1>      
-                </div> 
-                <div id = "Venues"> 
+                  <h1>GENRES</h1>
+                </div>
+                <div id = "Genre">
 
-                </div>   
+                </div>
         </div>
   </body>
   <script>
@@ -37,7 +38,7 @@
         var2: "<h1>Hiphop</h1><br><img class='center-block' src='https://s26162.pcdn.co/wp-content/uploads/2019/03/shabazz-hiphop_1024.jpg' alt=Lamp width=70% height=70%>",
         var3: "<h1>Electronic</h1><br><img class='center-block' src='http://www.canadien.biz/wp-content/uploads/2012/09/electronic-canadien.jpg'  alt=Lamp width=70% height=70%>",
     }
-    var Venues = document.getElementById("Venues");
+    var Genres = document.getElementById("Genres");
     for(var element in genere){
         var newJim = document.createElement('div');
         newJim.clasName = "container-fluid";
