@@ -27,26 +27,43 @@
                 <div class="jumbotron" style = "text-align: center; background-color: azure">
                   <h1>VENUES</h1>
                 </div>
-                <div id = "Venues">
+                <div id = "VenuesContainer" style="width: 100%; text-align:center">
 
                 </div>
         </div>
   </body>
   <script>
-    //feaux data
-    data = {
-        var1: "<h1>Hard Rock Hollywood</h1><br><h3>One of Hollywoods premier rock locations. History and Modernity Clash at this age old venue for groundbreaking performances</h3>",
-        var2: "<h1>The Benedum </h1><br><h3>A pittsburgh theater, have to fill the list</h3>",
-        var3: "<h1>Madison Square Garden </h1><h3> New Yorks Most Expensivist Venue, ball on your friends or save your money</h3>",
-    }
-    var Venues = document.getElementById("Venues");
-    for(var element in data){
-        var newJim = document.createElement('div');
-        newJim.clasName = "container-fluid";
-        newJim.style = " text-align: center; padding-top: 200px;";
-        newJim.innerHTML = data[element];
-        Venues.append(newJim);
-    }
-
-  </script>
+      var request = new XMLHttpRequest();
+      request.open('GET', 'http://localhost:3000/DATA/VENUES', true)
+  
+  request.onload = function () {
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response)
+      if (request.status >= 200 && request.status < 400) {
+          // The object itself contains a map of indexes to values, 
+          //so every element is itself, an index at face, IE just say data[element], ok.
+          var Bc = document.getElementById('VenuesContainer');
+          var newRow = document.createElement('div');
+          newRow.className = "container-fluid";
+          var i = 0;
+          for(var element in data){
+              var newCol = document.createElement('div');
+              newCol.style = i%2 == 0? "width: 100%; background-color:lavender;": "width: 100%; background-color:lavenderblush;";
+              newCol.className = "col-lg-4";
+              newCol.innerHTML = 
+                "<h1>" + data[element].Location + "</h1>" +
+                "<img class='img-rounded' style = 'padding-bottom: 50px;' src ='" +data[element].Image +"' alt=Lamp width=70% height=70%/>";
+              newRow.append(newCol)
+              Bc.append(newRow);
+              newRow = document.createElement('div');
+              newRow.className = "container-fluid";
+              i++;
+          } 
+      } else {
+          console.log('error')
+      }
+  }
+  // Send request
+  request.send()
+    </script>
 </html>

@@ -25,13 +25,48 @@
   <body>
     <div style = "background-color: azure">
                 <div class="jumbotron" style = "text-align: center; background-color: azure">
-                  <h1>ROCK CONCERTS</h1>
+                  <h1>ROCK BANDS</h1>
                 </div>
-                <div id = "E_C">
+                <div id = "BandContainer" style = "text-align: center">
 
                 </div>
         </div>
   </body>
   <script>
+      var request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:3000/DATA/ROCK', true)
+
+request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response)
+    if (request.status >= 200 && request.status < 400) {
+        // The object itself contains a map of indexes to values, 
+        //so every element is itself, an index at face, IE just say data[element], ok.
+        var Bc = document.getElementById('BandContainer');
+        var newRow = document.createElement('div');
+        newRow.className = "container-fluid";
+        var i = 0;
+        for(var element in data){
+            var newCol = document.createElement('div');
+            console.log(i);
+            newCol.style = i%2 == 0? "background-color:lavender;": "background-color:lavenderblush;";
+            newCol.className = "col-lg-4";
+            newCol.innerHTML = "<img src ='" +data[element].Image +"' alt=Lamp width=70% height=70%/>";
+            newRow.append(newCol)
+            if(++i % 3 == 0 ){
+                Bc.append(newRow);
+                newRow = document.createElement('div');
+                newRow.className = "container-fluid";
+            }
+        } 
+        if(i%3!=0){
+          Bc.append(newRow);
+        }
+    } else {
+        console.log('error')
+    }
+}
+// Send request
+request.send()
   </script>
 </html>

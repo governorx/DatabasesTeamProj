@@ -53,9 +53,7 @@ con.connect(function(err) {
 });
 
 
-//Sending Data to Pages is fake now, first line exhibits long term idea
-
-//TODO(tauren) Make these more specific when the time comes
+//SENDING DATA AND RESOURCES TO FRONT END.
 app.get('/DATA/HOME', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
@@ -68,12 +66,11 @@ app.get('/DATA/HOME', function (req, res, next) {
     });
   });
 });
-
 app.get('/DATA/SINGLES', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "Select * from Artist where artists < 1"
+    var sql = "Select * from band where artists = 1"
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -85,7 +82,7 @@ app.get('/DATA/BANDS', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "Select * from Band"
+    var sql = "Select * from Band where artists != 1"
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -93,13 +90,11 @@ app.get('/DATA/BANDS', function (req, res, next) {
     });
   });
 });
-
-//TODO(anyone) Get Performances by genre
 app.get('/DATA/ROCK', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "Select * from Artist, Band where Artist.Genre = 'ROCK' or Band.Genre = 'ROCK'"
+    var sql = "Select * from Band where Band.Genre = 'ROCK'"
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -111,7 +106,7 @@ app.get('/DATA/HIPHOP', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "Select * from Artist, Band where Artist.Genre = 'HIPHOP' or Band.Genre = 'HIPHOP';"
+    var sql = "Select * from Band where Band.Genre = 'HIPHOP';"
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -123,7 +118,19 @@ app.get('/DATA/ELECTRONIC', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "Select * from Artist, Band where Artist.Genre = 'ELECTRONIC' or Band.Genre = 'ELECTRONIC';"
+    var sql = "Select * from Band where Band.Genre = 'ELECTRONIC';"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
+});
+app.get('/DATA/VENUES', function (req, res, next) {
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "Select * from VENUE;"
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -132,7 +139,12 @@ app.get('/DATA/ELECTRONIC', function (req, res, next) {
   });
 });
 
-//Sending Pages
+//ABOUT IMAGE
+app.get('/Images/TheArchitects', function(req,res,next){
+  res.sendFile(__dirname + "/views/Images/group.jpg");
+})
+
+//SENDING GRAPHICAL CONTENT
 app.get('/', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/Home.html");
 });
