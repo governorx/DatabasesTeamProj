@@ -138,7 +138,7 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/Bands', function (req, res, next) {
-  res.sendFile(__dirname + "/views/pages/Bands.html");
+  res.sendFile(__dirname + "/views/pages/A_Bands.html");
 });
 
 app.get('/Artists', function (req, res, next) {
@@ -160,6 +160,18 @@ app.get('/Venues', function (req, res, next) {
 
 app.get('/About', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/About.html");
+});
+
+app.get('/G_Rock', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/G_Rock.html");
+});
+
+app.get('/G_Hiphop', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/G_Hiphop.html");
+});
+
+app.get('/G_Electronic', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/G_Electronic.html");
 });
 
 //Server Run
