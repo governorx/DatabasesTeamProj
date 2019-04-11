@@ -33,8 +33,6 @@ CREATE TABLE `Artist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-insert into `Artist` VALUES(0, "Krishon Jones", 21, "KRIS", "HipHop", "Pennsylvania", "Something");
-
 --
 -- Dumping data for table `Artist`
 --
@@ -81,7 +79,8 @@ CREATE TABLE `Band` (
   `Genre` varchar(255) DEFAULT NULL,
   `Location` varchar(255) DEFAULT NULL,
   `Availibity` varchar(255) DEFAULT NULL,
-  `Number` int(11) DEFAULT NULL
+  `Number` int(11) DEFAULT NULL,
+  `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -234,7 +233,8 @@ CREATE TABLE `Venue` (
   `Location` varchar(255) DEFAULT NULL,
   `Capacity` int(11) DEFAULT NULL,
   `Age_Min` int(11) DEFAULT NULL,
-  `Amenities` varchar(255) DEFAULT NULL
+  `Amenities` varchar(255) DEFAULT NULL,
+  `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -256,4 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-10 13:08:24
+-- Dump completed on 2019-04-10 21:43:22
