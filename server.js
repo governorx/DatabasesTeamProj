@@ -30,13 +30,13 @@ var con = mysql.createConnection({
 *4. Now we gotta create the tables
 * "CREATE TABLE Artist (Aid INT, Aname VARCHAR(255), age INT(3), Alias VARCHAR(255), Genre VARCHAR(255), Loc VARCHAR(255), AV VARCHAR(255))"
 * "CREATE TABLE BandMembers(Bid INT, AID INT, RMID INT)"
-* "CREATE TABLE Band(Bid INT, Bname VARCHAR(255), Artists INT, Genre VARCHAR(255), Location VARCHAR(255), Availibity VARCHAR(255), Number INT)"
+* "CREATE TABLE Band(Bid INT, Bname VARCHAR(255), Artists INT, Genre VARCHAR(255), Location VARCHAR(255), Availibity VARCHAR(255), Number VARCHAR(255), Image VARCHAR(255))"
 * "CREATE TABLE `Show`(`SHID INT`, `Location` VARCHAR(255), `Time` DATETIME, `Price` INT, `Promoter` INT, `ATT_Count` INT, `Explicit` BOOLEAN, `Venue` INT, `Opener` INT, `Headlines` INT, `Set` VARCHAR(255))"
-* "CREATE TABLE Venue(VID INT, Location VARCHAR(255), Capacity INT, Age_Min INT, Amenities VARCHAR(255))"
+* "CREATE TABLE Venue(VID INT, Location VARCHAR(255), Capacity INT, Age_Min INT, Amenities VARCHAR(255), Image VARCHAR(255))"
 * "CREATE TABLE Attendes(SHID INT, SID INT)"
 * "CREATE TABLE Savant(SID INT, Genres VARCHAR(255), Location VARCHAR(255), Age INT)"
 * "CREATE TABLE Promoter_Contacts(VID INT, PID INT, CID INT)"
-* "CREATE TABlE Promoter(PID INT, Venue INT, Budget INT, Availibity VARCHAR(255), Genres VARCHAR(255), Number INT, BIO VARCHAR(255))"
+* "CREATE TABlE Promoter(PID INT, Venue INT, Budget INT, Availibity VARCHAR(255), Genres VARCHAR(255), Number VARCHAR(255), BIO VARCHAR(255))"
 * Put all of these into vars and then run con.query like the above
 * Now You should have all the tables and such
 * These are all commands so now we need to insert data
