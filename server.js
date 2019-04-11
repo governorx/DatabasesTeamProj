@@ -5,6 +5,8 @@
 //"show tables;"
 
 //Requirements and initiation.
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: true });
 var port = process.env.PORT || 3000;
 var mysql = require('mysql');
 var express = require('express');
@@ -37,6 +39,7 @@ var con = mysql.createConnection({
 * "CREATE TABLE Savant(SID INT, Genres VARCHAR(255), Location VARCHAR(255), Age INT)"
 * "CREATE TABLE Promoter_Contacts(VID INT, PID INT, CID INT)"
 * "CREATE TABlE Promoter(PID INT, Venue INT, Budget INT, Availibity VARCHAR(255), Genres VARCHAR(255), Number VARCHAR(255), BIO VARCHAR(255))"
+* create table favorites(sid int, bid int, fid int);
 * Put all of these into vars and then run con.query like the above
 * Now You should have all the tables and such
 * These are all commands so now we need to insert data
@@ -139,10 +142,27 @@ app.get('/DATA/VENUES', function (req, res, next) {
   });
 });
 
+//FORM DATA WORK IN PROGRESS NEED TO GET REQUEST
+app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "SELECT BNAME,IMAGE FROM SAVANT JOIN FAVORITES JOIN BAND WHERE FAVORITES.SID = SAVANT.SID AND SNAME LIKE '" + req.body.name + "%' AND BAND.BID = FAVORITES.BID;"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
+});
+
+
+
 //ABOUT IMAGE
 app.get('/Images/TheArchitects', function(req,res,next){
   res.sendFile(__dirname + "/views/Images/group.jpg");
 })
+
 
 //SENDING GRAPHICAL CONTENT
 app.get('/', function (req, res, next) {
@@ -185,7 +205,15 @@ app.get('/G_Hiphop', function (req, res, next) {
 app.get('/G_Electronic', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/G_Electronic.html");
 });
-
+app.get('/User', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/User.html");
+});
+app.get('/U_Shows', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/U_Shows.html");
+});
+app.get('/U_Favorites', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/U_Favorites.html");
+});
 //Server Run
 app.listen(port, function(){
   console.log("Krishon is on the run you better go get him.." );
