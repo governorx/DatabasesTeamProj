@@ -1,7 +1,38 @@
-<form action = '/U_Favorites' method = "POST">
-<textarea type= "TEXT" name = "name"></textarea>
-<input type="submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<!-- Imports -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+  </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="/">Krishon</a>
+                </div>
+                <ul class="nav navbar-nav bg-light">
+                <li><a href="/">Home</a></li>
+                <li><a href="/Venues">Venues</a></li>
+                <li><a href="/Artists">Artists</a></li>
+                <li><a href="/Genres">Genres</a></li>
+                <li class = "active"><a href="/User">Profile</a></li>
+                <li><a href="/About">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div style = "padding-top: 100px; text-align: center;">
+            <form action = '/U_Favorites' method = "POST">
+                <textarea type= "TEXT" name = "name"></textarea>
+                <br>
+                <input type="submit">
+            </form>
+        </div>
+    </body>
+</html>
 <!--
 
 figure out how to send messages and get replies withotut refreshing
