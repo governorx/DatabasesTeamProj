@@ -155,6 +155,19 @@ app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
     });
   });
 });
+app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    console.log(req.body);
+    var sql = "SELECT BNAME,IMAGE FROM SAVANT JOIN FAVORITES JOIN BAND WHERE FAVORITES.SID = SAVANT.SID AND SNAME LIKE '" + req.body.name + "%' AND BAND.BID = FAVORITES.BID;"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
+});
 
 
 

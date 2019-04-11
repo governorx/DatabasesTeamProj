@@ -2,3 +2,31 @@
 <textarea type= "TEXT" name = "name"></textarea>
 <input type="submit">
 </form>
+<!--
+
+figure out how to send messages and get replies withotut refreshing
+<form id = "myForm">
+<textarea type= "TEXT" name = "name"></textarea>
+<input type="submit">
+</form>
+<div id = "box"></div>
+<script>
+        var form = document.getElementById("myForm");
+      form.addEventListener("submit", function (data) {
+          console.log("WOWOWOWO");
+          console.log(data);
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("box").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("POST", "/U_Favorites", true);
+      xhttp.send(data);
+  
+  });
+  
+  </script>
+
+
+-->
