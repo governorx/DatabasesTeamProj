@@ -11,7 +11,7 @@
   <nav class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand" href="#">Krishon</a>
+            <a class="navbar-brand" href="/">Krishon</a>
             </div>
             <ul class="nav navbar-nav bg-light">
             <li><a href="/">Home</a></li>
@@ -34,17 +34,17 @@
   </body>
   <script>
     genere = {
-        var1: "<h1>Rock</h1><br><img class='center-block' src='https://pbcdn1.podbean.com/imglogo/ep-logo/pbblog2947900/Rock.jpg'  alt=Lamp width=70% height=70%>",
-        var2: "<h1>Hiphop</h1><br><img class='center-block' src='https://s26162.pcdn.co/wp-content/uploads/2019/03/shabazz-hiphop_1024.jpg' alt=Lamp width=70% height=70%>",
-        var3: "<h1>Electronic</h1><br><img class='center-block' src='http://www.canadien.biz/wp-content/uploads/2012/09/electronic-canadien.jpg'  alt=Lamp width=70% height=70%>",
+        var1: "<a href='/G_Rock'><h1>Rock</h1><br>'<img class='center-block' src='http://www.music2hues.com/royalty-free-music/img/1_guitar_rock.jpg'  alt=Lamp width=70% height=70%></a>",
+        var2: "<a href='/G_Hiphop'><h1>Hiphop</h1><br><img class='center-block' src='https://s26162.pcdn.co/wp-content/uploads/2019/03/shabazz-hiphop_1024.jpg' alt=Lamp width=70% height=70%></a>",
+        var3: "<a href='/G_Electronic'><h1>Electronic</h1><br><img class='center-block' src='https://legismusic.com/wp-content/uploads/2016/09/musica-electronica-sin-copyright-1.jpg'  alt=Lamp width=70% height=70%></a>",
     }
-    var Genres = document.getElementById("Genres");
+    var Genres = document.getElementById("Genre");
     for(var element in genere){
         var newJim = document.createElement('div');
         newJim.clasName = "container-fluid";
         newJim.style = " text-align: center; padding-top: 200px;";
         newJim.innerHTML = genere[element];
-        Venues.append(newJim);
+        Genres.append(newJim);
     }
 
   </script>
