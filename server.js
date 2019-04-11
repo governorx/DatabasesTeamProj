@@ -45,7 +45,7 @@ var con = mysql.createConnection({
 con.connect(function(err) {
   if (err) console.log(err);
   console.log("Connected!");
-  var sql = "Select * from `Show`"
+  var sql = "Select * from ARTIST"
   con.query(sql, function (err, result) {
     if (err) console.log(err);
     console.log(result);
@@ -60,7 +60,7 @@ app.get('/DATA/HOME', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "Select * from `Show`"
+    var sql = "Select * from band"
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -73,7 +73,7 @@ app.get('/DATA/SINGLES', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "Select * from Artist"
+    var sql = "Select * from Artist where artists < 1"
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
