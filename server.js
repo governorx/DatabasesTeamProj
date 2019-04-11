@@ -52,30 +52,84 @@ con.connect(function(err) {
   });
 });
 
+
 //Sending Data to Pages is fake now, first line exhibits long term idea
 
-//TODO(tauren) list all bands
+//TODO(tauren) Make these more specific when the time comes
 app.get('/DATA/HOME', function (req, res, next) {
-  //res.send(/*SELECT * FROM Shows> 1 */);
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "Select * from `Show`"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
 });
 
-//TODO(tauren) BAND ONE ARTIRST OR > 1 ARTIST
 app.get('/DATA/SINGLES', function (req, res, next) {
-  //res.send(/*SELECT * FROM BAND WHERE ARTIST IS 1 */);
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "Select * from Artist"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
 });
 app.get('/DATA/BANDS', function (req, res, next) {
-  //res.send(/*SELECT * FROM BAND WHERE ARTIST > 1 */);
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "Select * from Band"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
 });
 
 //TODO(anyone) Get Performances by genre
 app.get('/DATA/ROCK', function (req, res, next) {
-  //res.send(/*SELECT * FROM BAND WHERE GENRE IS ROCK) */);
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "Select * from Artist, Band where Artist.Genre = 'ROCK' or Band.Genre = 'ROCK'"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
 });
 app.get('/DATA/HIPHOP', function (req, res, next) {
-  //res.send(/*SELECT * FROM BAND WHERE GENRE IS HIPHOP) */);
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "Select * from Artist, Band where Artist.Genre = 'HIPHOP' or Band.Genre = 'HIPHOP';"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
 });
 app.get('/DATA/ELECTRONIC', function (req, res, next) {
-  //res.send(/*SELECT * FROM BAND WHERE GENRE IS ELECTRONIC) */);
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    var sql = "Select * from Artist, Band where Artist.Genre = 'ELECTRONIC' or Band.Genre = 'ELECTRONIC';"
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
 });
 
 //Sending Pages
