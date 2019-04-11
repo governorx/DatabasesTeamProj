@@ -84,27 +84,28 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/Bands', function (req, res, next) {
-  res.sendFile(__dirname + "/views/pages/Venues.html");
+  res.sendFile(__dirname + "/views/pages/Bands.html");
 });
 
 app.get('/Artists', function (req, res, next) {
-  res.sendFile(__dirname + "/views/pages/Venues.html");
-});
-
-app.get('/Bands', function (req, res, next) {
-  res.sendFile(__dirname + "/views/pages/Venues.html");
+  res.sendFile(__dirname + "/views/pages/Artists.html");
 });
 
 app.get('/Singles', function (req, res, next) {
-  res.sendFile(__dirname + "/views/pages/Venues.html");
+  res.sendFile(__dirname + "/views/pages/A_Singles.html");
 });
 
 
 app.get('/Genres', function (req, res, next) {
-  res.sendFile(__dirname + "/views/pages/Venues.html");
+  res.sendFile(__dirname + "/views/pages/Genres.html");
 });
+
 app.get('/Venues', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/Venues.html");
+});
+
+app.get('/About', function (req, res, next) {
+  res.sendFile(__dirname + "/views/pages/About.html");
 });
 
 //Server Run
