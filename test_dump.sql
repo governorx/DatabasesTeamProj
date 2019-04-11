@@ -66,31 +66,31 @@ INSERT INTO `Attendes` VALUES (1,2);
 UNLOCK TABLES;
 
 --
--- Table structure for table `Band`
+-- Table structure for table `band`
 --
 
-DROP TABLE IF EXISTS `Band`;
+DROP TABLE IF EXISTS `band`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Band` (
+CREATE TABLE `band` (
   `Bid` int(11) DEFAULT NULL,
   `Bname` varchar(255) DEFAULT NULL,
   `Artists` int(11) DEFAULT NULL,
   `Genre` varchar(255) DEFAULT NULL,
   `Location` varchar(255) DEFAULT NULL,
   `Availibity` varchar(255) DEFAULT NULL,
-  `Number` int(11) DEFAULT NULL,
+  `Number` varchar(255) DEFAULT NULL,
   `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Band`
+-- Dumping data for table `band`
 --
 
-LOCK TABLES `Band` WRITE;
-/*!40000 ALTER TABLE `Band` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Band` ENABLE KEYS */;
+LOCK TABLES `band` WRITE;
+/*!40000 ALTER TABLE `band` DISABLE KEYS */;
+/*!40000 ALTER TABLE `band` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `Promoter` (
   `Budget` int(11) DEFAULT NULL,
   `Availibity` varchar(255) DEFAULT NULL,
   `Genres` varchar(255) DEFAULT NULL,
-  `Number` int(11) DEFAULT NULL,
+  `Number` varchar(255) DEFAULT NULL,
   `BIO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -256,4 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-10 21:43:22
+-- Dump completed on 2019-04-10 21:59:19
