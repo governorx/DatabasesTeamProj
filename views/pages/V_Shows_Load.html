@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Imports -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <nav class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="/">Krishon</a>
+            </div>
+            <ul class="nav navbar-nav bg-light">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Venues">Venues</a></li>
+            <li><a href="/Artists">Artists</a></li>
+            <li><a href="/Genres">Genres</a></li>
+            <li class = "active"><a href="/User">Profile</a></li>
+            <li><a href="/About">About</a></li>
+            </ul>
+        </div>
+    </nav>
+  <body>
+    <div style = "background-color: azure">
+    <div class="container-fluid"  id = "BandContainer" width = 100%  style="text-align: center; padding-top: 70px">
+    </div>
+    </div>
+
+  </body>
+  <script>
+      var request = new XMLHttpRequest();
+      request.open('GET', 'http://localhost:3000/DATA/U_Shows', true)
+  
+    request.onload = function () {
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response)
+      if (request.status >= 200 && request.status < 400) {
+          // The object itself contains a map of indexes to values, 
+          //so every element is itself, an index at face, IE just say data[element], ok.
+          var Bc = document.getElementById('BandContainer');
+          var newRow = document.createElement('div');
+          newRow.className = "container-fluid";
+          var i = 0;
+          for(var element in data){
+              var newCol = document.createElement('div');
+              newCol.style = i%2 == 0? "width: 100%; background-color:lavender;": "width: 100%; background-color:lavenderblush;";
+              newCol.className = "col-lg-4";
+              newCol.innerHTML = 
+                "<h1> On " + data[element].Time +  " See " + data[element].Bname + "</h1>" +
+                "<img class='img-rounded' style = 'padding-bottom: 50px;' src ='" +data[element].Image +"' alt=Lamp width=70% height=70%/>";
+              newRow.append(newCol)
+              Bc.append(newRow);
+              newRow = document.createElement('div');
+              newRow.className = "container-fluid";
+              i++;
+          } 
+      } else {
+          console.log('error')
+      }
+  }
+  // Send request
+  request.send()
+    </script>
+</html>
