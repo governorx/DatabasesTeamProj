@@ -177,6 +177,11 @@ app.post('/U_Shows', urlencodedParser, function (req, res, next) {
   tmpUserData = sql;
   res.sendFile(__dirname + "/views/pages/U_Shows_load.html");
 });
+app.post('/VENUES', urlencodedParser, function (req, res, next) {
+  var sql = 'SELECT * FROM `SHOW` WHERE LOCATION LIKE "' + req.body.name + '%";'
+  tmpUserData = sql;
+  res.sendFile(__dirname + "/views/pages/V_Shows_load.html");
+});
 
 
 //ABOUT IMAGE
