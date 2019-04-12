@@ -3,9 +3,10 @@
 //if you have run "mysql -u root -p"
 //"use test"
 //"show tables;"
-
 //Requirements and initiation.
 var bodyParser = require('body-parser');
+var tmpUserData = "";
+var tmpVenueLocation = "";
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 var port = process.env.PORT || 3000;
 var mysql = require('mysql');
@@ -17,7 +18,6 @@ var con = mysql.createConnection({
   password: "123456789",
   database: "test"
 });
-
 // TO ADD THE DATABASE:: RUN THIS COMMAND ON .sql FILE IN GIT
 //mysql -u root -p test < test_dump.sql
 
@@ -141,13 +141,11 @@ app.get('/DATA/VENUES', function (req, res, next) {
     });
   });
 });
-
-//FORM DATA WORK IN PROGRESS NEED TO GET REQUEST
-app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
+app.get('/DATA/U_FAVORITES', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = "SELECT BNAME,IMAGE FROM SAVANT JOIN FAVORITES JOIN BAND WHERE FAVORITES.SID = SAVANT.SID AND SNAME LIKE '" + req.body.name + "%' AND BAND.BID = FAVORITES.BID;"
+    var sql = tmpUserData;
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -155,12 +153,11 @@ app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
     });
   });
 });
-app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
+app.get('/DATA/U_SHOWS', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    console.log(req.body);
-    var sql = "SELECT BNAME,IMAGE FROM SAVANT JOIN FAVORITES JOIN BAND WHERE FAVORITES.SID = SAVANT.SID AND SNAME LIKE '" + req.body.name + "%' AND BAND.BID = FAVORITES.BID;"
+    var sql = tmpUserData;
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -169,13 +166,23 @@ app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
   });
 });
 
+//FORM DATA
+app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
+    var sql = "SELECT BNAME,IMAGE FROM SAVANT JOIN FAVORITES JOIN BAND WHERE FAVORITES.SID = SAVANT.SID AND SNAME LIKE '" + req.body.name + "%' AND BAND.BID = FAVORITES.BID;";
+    tmpUserData = sql;
+    res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
+}); 
+app.post('/U_Shows', urlencodedParser, function (req, res, next) {
+  var sql = 'SELECT * FROM SAVANT JOIN `SHOW` JOIN ATTENDES JOIN VENUE WHERE VENUE.VID = VENUE AND ATTENDES.SID = SAVANT.SID AND `SHOW`.SHID  = ATTENDES.SHID AND SNAME LIKE "' + req.body.name + '%";'
+  tmpUserData = sql;
+  res.sendFile(__dirname + "/views/pages/U_Shows_load.html");
+});
 
 
 //ABOUT IMAGE
 app.get('/Images/TheArchitects', function(req,res,next){
   res.sendFile(__dirname + "/views/Images/group.jpg");
 })
-
 
 //SENDING GRAPHICAL CONTENT
 app.get('/', function (req, res, next) {
@@ -227,6 +234,10 @@ app.get('/U_Shows', function (req, res, next) {
 app.get('/U_Favorites', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/U_Favorites.html");
 });
+app.get('/U_Favorites_Loaded', function(req,res,next){
+  res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
+})
+
 //Server Run
 app.listen(port, function(){
   console.log("Krishon is on the run you better go get him.." );

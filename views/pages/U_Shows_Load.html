@@ -17,27 +17,24 @@
             <li><a href="/">Home</a></li>
             <li><a href="/Venues">Venues</a></li>
             <li><a href="/Artists">Artists</a></li>
-            <li class="active" ><a href="/Genres">Genres</a></li>
-            <li><a href="/User">Profile</a></li>
+            <li><a href="/Genres">Genres</a></li>
+            <li class = "active"><a href="/User">Profile</a></li>
             <li><a href="/About">About</a></li>
             </ul>
         </div>
     </nav>
   <body>
     <div style = "background-color: azure">
-                <div class="jumbotron" style = "text-align: center; background-color: azure">
-                  <h1>ELECTRONIC BANDS</h1>
-                </div>
-                <div id = "BandContainer" style = "text-align: center;">
+    <div class="container-fluid"  id = "BandContainer" width = 100%  style="text-align: center; padding-top: 70px">
+    </div>
+    </div>
 
-                </div>
-        </div>
   </body>
   <script>
       var request = new XMLHttpRequest();
-      request.open('GET', 'http://localhost:3000/DATA/ELECTRONIC', true)
+      request.open('GET', 'http://localhost:3000/DATA/U_Shows', true)
   
-  request.onload = function () {
+    request.onload = function () {
       // Begin accessing JSON data here
       var data = JSON.parse(this.response)
       if (request.status >= 200 && request.status < 400) {
@@ -49,20 +46,17 @@
           var i = 0;
           for(var element in data){
               var newCol = document.createElement('div');
-              console.log(i);
-              newCol.style = i%2 == 0? "background-color:lavender;": "background-color:lavenderblush;";
+              newCol.style = i%2 == 0? "width: 100%; background-color:lavender;": "width: 100%; background-color:lavenderblush;";
               newCol.className = "col-lg-4";
-              newCol.innerHTML = "<img src ='" +data[element].Image +"' alt=Lamp width=70% height=70%/>";
+              newCol.innerHTML = 
+                "<h1>" + data[element].Location + "</h1>" +
+                "<img class='img-rounded' style = 'padding-bottom: 50px;' src ='" +data[element].Image +"' alt=Lamp width=70% height=70%/>";
               newRow.append(newCol)
-              if(++i % 3 == 0 ){
-                  Bc.append(newRow);
-                  newRow = document.createElement('div');
-                  newRow.className = "container-fluid";
-              }
+              Bc.append(newRow);
+              newRow = document.createElement('div');
+              newRow.className = "container-fluid";
+              i++;
           } 
-          if(i%3!=0){
-            Bc.append(newRow);
-          }
       } else {
           console.log('error')
       }
