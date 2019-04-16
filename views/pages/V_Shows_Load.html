@@ -25,6 +25,16 @@
     </nav>
   <body>
     <div style = "background-color: azure">
+        <form action = "/U_Shows_Load" method="POST">
+          <div class = "container-fluid" id = "ShowBar" width = 100%  style="text-align: center; padding-top: 70px">
+            Enter Username and select Show to attend
+            <br>
+          <input type= "TEXT" name = "name"></input>
+          </div>
+          <div class = "container-fluid" width = 100%  style="text-align: center;">
+              <input type="submit">	</input>
+          </div>
+         </form>
     <div class="container-fluid"  id = "BandContainer" width = 100%  style="text-align: center; padding-top: 70px">
     </div>
     </div>
@@ -43,8 +53,15 @@
           var Bc = document.getElementById('BandContainer');
           var newRow = document.createElement('div');
           newRow.className = "container-fluid";
+          var selectBox = document.getElementById("ShowBar");
+          var dropdown = document.createElement('select');
           var i = 0;
           for(var element in data){
+            var newCol = document.createElement('div');
+              var newOpt = document.createElement('option');
+              newOpt.value  = data[element].Bname;
+              newOpt.text = data[element].Bname;
+              dropdown.append(newOpt);
               var newCol = document.createElement('div');
               newCol.style = i%2 == 0? "width: 100%; background-color:lavender;": "width: 100%; background-color:lavenderblush;";
               newCol.className = "col-lg-4";
@@ -57,6 +74,7 @@
               newRow.className = "container-fluid";
               i++;
           } 
+          selectBox.append(dropdown);
       } else {
           console.log('error')
       }

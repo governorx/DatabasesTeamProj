@@ -6,6 +6,7 @@
 //Requirements and initiation.
 var bodyParser = require('body-parser');
 var tmpUserData = "";
+var tmpVuserData = "";
 var tmpVenueLocation = "";
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 var port = process.env.PORT || 3000;
@@ -157,7 +158,7 @@ app.get('/DATA/U_SHOWS', function (req, res, next) {
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
-    var sql = tmpUserData;
+    var sql = tmpVUserData;
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
@@ -179,7 +180,7 @@ app.post('/U_Shows', urlencodedParser, function (req, res, next) {
 });
 app.post('/VENUES', urlencodedParser, function (req, res, next) {
   var sql = 'SELECT * FROM `SHOW` JOIN BAND WHERE `SHOW`.OPENER = Band.BID AND `SHOW`.LOCATION LIKE "' + req.body.name + '%";'
-  tmpUserData = sql;
+  tmpVUserData = sql;
   res.sendFile(__dirname + "/views/pages/V_Shows_load.html");
 });
 app.post('/Singles', urlencodedParser, function (req, res, next) {
