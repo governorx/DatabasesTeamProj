@@ -182,6 +182,19 @@ app.post('/VENUES', urlencodedParser, function (req, res, next) {
   tmpUserData = sql;
   res.sendFile(__dirname + "/views/pages/V_Shows_load.html");
 });
+app.post('/Singles', urlencodedParser, function (req, res, next) {
+    //replace command  with the one to get the fav bands, and then uncomment both lines
+  //var sql = 'SELECT * FROM `SHOW` JOIN BAND WHERE `SHOW`.OPENER = Band.BID AND `SHOW`.LOCATION LIKE "' + req.body.name + '%";'
+  //tmpUserData = sql;
+  console.log("sending");
+  res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
+});
+app.post('/Bands', urlencodedParser, function (req, res, next) {
+  //replace command  with the one to get the fav bands, and then uncomment both lines
+  //var sql = 'SELECT * FROM `SHOW` JOIN BAND WHERE `SHOW`.OPENER = Band.BID AND `SHOW`.LOCATION LIKE "' + req.body.name + '%";'
+  //tmpUserData = sql;
+  res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
+});
 
 
 //ABOUT IMAGE
@@ -237,6 +250,9 @@ app.get('/U_Shows', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/U_Shows.html");
 });
 app.get('/U_Favorites', function (req, res, next) {
+  if(tmpUserData){
+    res.redirect('/U_Favorites_Loaded');
+  }
   res.sendFile(__dirname + "/views/pages/U_Favorites.html");
 });
 app.get('/U_Favorites_Loaded', function(req,res,next){

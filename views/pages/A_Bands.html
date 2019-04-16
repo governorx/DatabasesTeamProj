@@ -18,13 +18,24 @@
             <li><a href="/Venues">Venues</a></li>
             <li class="active"><a href="/Artists">Artists</a></li>
             <li><a href="/Genres">Genres</a></li>
+            <li><a href="/User">Profile</a></li>
             <li><a href="/About">About</a></li>
             </ul>
         </div>
     </nav>
   <body>
     <div style = "background-color: azure">
-    <div class="container-fluid"  id = "BandContainer" width = 100%  style="text-align: center; padding-top: 70px">
+        <form action = "/Bands" method="POST">
+          <div class = "container-fluid" id = "FavoriteBar" width = 100%  style="text-align: center; padding-top: 70px">
+            Enter Username and select Favorite
+            <br>
+          <input type= "TEXT" name = "name"></input>
+          </div>
+          <div class = "container-fluid" id = "FavoriteBar" width = 100%  style="text-align: center;">
+              <input type="submit">	</input>
+          </div>
+         </form>
+    <div class="container-fluid"  id = "BandContainer" width = 100%  style="text-align: center; padding-top: 20px">
     </div>
     </div>
 
@@ -40,12 +51,17 @@
           // The object itself contains a map of indexes to values, 
           //so every element is itself, an index at face, IE just say data[element], ok.
           var Bc = document.getElementById('BandContainer');
+          var selectBox = document.getElementById("FavoriteBar");
+          var dropdown = document.createElement('select');
           var newRow = document.createElement('div');
-          newRow.className = "container-fluid";
           var i = 0;
           for(var element in data){
               var newCol = document.createElement('div');
-              console.log(i);
+              var newOpt = document.createElement('option');
+              newOpt.value  = data[element].Bname;
+              newOpt.text = data[element].Bname;
+              console.log(newOpt);
+              dropdown.append(newOpt);
               newCol.style = i%2 == 0? "background-color:lavender;": "background-color:lavenderblush;";
               newCol.className = "col-lg-4";
               newCol.innerHTML = "<img src ='" +data[element].Image +"' alt=Lamp width=70% height=70%/>";
@@ -59,6 +75,7 @@
           if(i%3!=0){
             Bc.append(newRow);
           }
+          selectBox.append(dropdown);
       } else {
           console.log('error')
       }
