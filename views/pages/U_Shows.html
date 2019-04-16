@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8">
   </head>
-    <body>
+    <body style="background-color: azure">
     <nav class="navbar navbar-inverse navbar-fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -25,6 +25,7 @@
             </div>
         </nav>
         <div style = "padding-top: 100px; text-align: center;">
+            <h2>Search for User</h2>
             <form action = '/U_Shows' method = "POST">
                 <textarea type= "TEXT" name = "name"></textarea>
                 <br>
@@ -54,9 +55,9 @@ figure out how to send messages and get replies withotut refreshing
     };
     xhttp.open("POST", "/U_Favorites", true);
       xhttp.send(data);
-  
+
   });
-  
+
   </script>
 
 
