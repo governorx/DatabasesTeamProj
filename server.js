@@ -171,7 +171,7 @@ app.post('/U_Favorites', urlencodedParser, function (req, res, next) {
     var sql = "SELECT BNAME,IMAGE FROM SAVANT JOIN FAVORITES JOIN BAND WHERE FAVORITES.SID = SAVANT.SID AND SNAME LIKE '" + req.body.name + "%' AND BAND.BID = FAVORITES.BID;";
     tmpUserData = sql;
     res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
-}); 
+});
 app.post('/U_Shows', urlencodedParser, function (req, res, next) {
   var sql = 'SELECT * FROM SAVANT JOIN `SHOW` JOIN ATTENDES JOIN VENUE WHERE VENUE.VID = VENUE AND ATTENDES.SID = SAVANT.SID AND `SHOW`.SHID  = ATTENDES.SHID AND SNAME LIKE "' + req.body.name + '%";'
   tmpUserData = sql;
@@ -183,16 +183,16 @@ app.post('/VENUES', urlencodedParser, function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/V_Shows_load.html");
 });
 app.post('/Singles', urlencodedParser, function (req, res, next) {
-    //replace command  with the one to get the fav bands, and then uncomment both lines
-  //var sql = 'SELECT * FROM `SHOW` JOIN BAND WHERE `SHOW`.OPENER = Band.BID AND `SHOW`.LOCATION LIKE "' + req.body.name + '%";'
-  //tmpUserData = sql;
+  //replace command  with the one to get the fav bands, and then uncomment both lines
+  var sql = 'Select * from favorites join Band join Savant where favorites.bid = Band.Bid and favorites.sid = Savant.SID and Savant.SNAME LIKE "' + req.body.name + '%";'
+  tmpUserData = sql;
   console.log("sending");
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
 app.post('/Bands', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
-  //var sql = 'SELECT * FROM `SHOW` JOIN BAND WHERE `SHOW`.OPENER = Band.BID AND `SHOW`.LOCATION LIKE "' + req.body.name + '%";'
-  //tmpUserData = sql;
+  var sql = 'Select * from favorites join Band join Savant where favorites.bid = Band.Bid and favorites.sid = Savant.SID and Savant.SNAME LIKE "' + req.body.name + '%";'
+  tmpUserData = sql;
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
 
