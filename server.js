@@ -201,7 +201,7 @@ app.post('/Singles', urlencodedParser, function (req, res, next) {
 });
 app.post('/Bands', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
-  var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);';
+ /* var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);';
   console.log("sending favorite");
   con.connect(function(err) {
     if (err) console.log(err);
@@ -210,14 +210,14 @@ app.post('/Bands', urlencodedParser, function (req, res, next) {
       if (err) console.log(err);
       console.log(result);
     });
-  });
+  });*/
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
 
 
 app.post('/SignUp', urlencodedParser, function (req, res, next) {
   //comes with .ID, .favoriteGenre, .name .age .location
-  var sql = 'Insert INTO Savant values(' + req.body.id + ', "' + req.body.favoriteGenre + '", "' + req.body.location + '", ' + req.body.age + ', "' + req.body.name + '");'
+ /* var sql = 'Insert INTO Savant values(' + req.body.id + ', "' + req.body.favoriteGenre + '", "' + req.body.location + '", ' + req.body.age + ', "' + req.body.name + '");'
   con.connect(function(err) {
     if (err) console.log(err);
     console.log("Connected!");
@@ -225,7 +225,7 @@ app.post('/SignUp', urlencodedParser, function (req, res, next) {
       if (err) console.log(err);
       console.log(result);
     });
-  });
+  });*/
   res.redirect("/USER");
 });
 
@@ -233,11 +233,12 @@ app.post('/SignUp', urlencodedParser, function (req, res, next) {
 app.get('/Images/TheArchitects', function(req,res,next){
   res.sendFile(__dirname + "/views/Images/group.jpg");
 })
-
+ 
 //SENDING GRAPHICAL CONTENT
 app.get('/', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/Home.html");
 });
+
 
 app.get('/Bands', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/A_Bands.html");
