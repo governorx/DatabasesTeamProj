@@ -183,24 +183,52 @@ app.post('/VENUES', urlencodedParser, function (req, res, next) {
   tmpVUserData = sql;
   res.sendFile(__dirname + "/views/pages/V_Shows_load.html");
 });
+
+//REPLACE THE SQL CALLS IN THIS WITH ONES TO ADD A FAVORITE RELATION
 app.post('/Singles', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
   var sql = 'Select * from favorites join Band join Savant where favorites.bid = Band.Bid and favorites.sid = Savant.SID and Savant.SNAME LIKE "' + req.body.name + '%";'
-  tmpUserData = sql;
-  console.log("sending");
+  console.log("sending favorite");
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
 app.post('/Bands', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
   var sql = 'Select * from favorites join Band join Savant where favorites.bid = Band.Bid and favorites.sid = Savant.SID and Savant.SNAME LIKE "' + req.body.name + '%";'
-  tmpUserData = sql;
+  console.log("sending favorite");
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+      res.send(result);
+    });
+  });
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
+
+
 app.post('/SignUp', urlencodedParser, function (req, res, next) {
   //comes with .ID, .favoriteGenre, .name .age .location
-  var sql = 'Insert INTO Savant values(' + req.body.ID + ', "' + req.body.favoriteGenre + '", "' + req.body.location + '", ' + req.body.age + ', "' + req.body.name + '");'
-  tmpUserData = sql;
-  res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
+  var sql = 'Insert INTO Savant values(' + req.body.id + ', "' + req.body.favoriteGenre + '", "' + req.body.location + '", ' + req.body.age + ', "' + req.body.name + '");'
+  con.connect(function(err) {
+    if (err) console.log(err);
+    console.log("Connected!");
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      console.log(result);
+    });
+  });
+  res.redirect("/USER");
 });
 
 //ABOUT IMAGE
@@ -256,14 +284,15 @@ app.get('/U_Shows', function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/U_Shows.html");
 });
 app.get('/U_Favorites', function (req, res, next) {
-  if(tmpUserData){
-    res.redirect('/U_Favorites_Loaded');
-  }
+
   res.sendFile(__dirname + "/views/pages/U_Favorites.html");
 });
 app.get('/U_Favorites_Loaded', function(req,res,next){
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
-})
+});
+app.get('/Signup', function(req,res,next){
+  res.sendFile(__dirname + "/views/pages/SignUp.html");
+});
 
 //Server Run
 app.listen(port, function(){
