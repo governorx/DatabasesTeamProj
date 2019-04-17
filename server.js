@@ -187,7 +187,7 @@ app.post('/VENUES', urlencodedParser, function (req, res, next) {
 //REPLACE THE SQL CALLS IN THIS WITH ONES TO ADD A FAVORITE RELATION
 app.post('/Singles', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
-  var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);'
+  var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);';
   console.log("sending favorite");
   con.connect(function(err) {
     if (err) console.log(err);
@@ -195,15 +195,13 @@ app.post('/Singles', urlencodedParser, function (req, res, next) {
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
-      res.send(result);
     });
   });
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
 app.post('/Bands', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
-  var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);'
-
+  var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);';
   console.log("sending favorite");
   con.connect(function(err) {
     if (err) console.log(err);
@@ -211,7 +209,6 @@ app.post('/Bands', urlencodedParser, function (req, res, next) {
     con.query(sql, function (err, result) {
       if (err) console.log(err);
       console.log(result);
-      res.send(result);
     });
   });
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
