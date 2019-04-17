@@ -198,7 +198,7 @@ app.post('/Bands', urlencodedParser, function (req, res, next) {
 });
 app.post('/SignUp', urlencodedParser, function (req, res, next) {
   //comes with .ID, .favoriteGenre, .name .age .location
-  var sql = 'Insert INTO Savant values(' + req.body.ID + ', ' + req.body.favoriteGenre + ', ' + req.body.location + ', ' + req.body.name + ', ' + req.body.name + ');'
+  var sql = 'Insert INTO Savant values(' + req.body.ID + ', "' + req.body.favoriteGenre + '", "' + req.body.location + '", ' + req.body.age + ', "' + req.body.name + '");'
   tmpUserData = sql;
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
