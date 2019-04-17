@@ -197,9 +197,8 @@ app.post('/Bands', urlencodedParser, function (req, res, next) {
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
 app.post('/SignUp', urlencodedParser, function (req, res, next) {
-  //replace command  with the one to get the fav bands, and then uncomment both lines
-  // comes with .ID, .favoriteGenre, .name .age //replace value with insert command.
-  //var sql = 'Select * from favorites join Band join Savant where favorites.bid = Band.Bid and favorites.sid = Savant.SID and Savant.SNAME LIKE "' + req.body.name + '%";'
+  //comes with .ID, .favoriteGenre, .name .age .location
+  var sql = 'Insert INTO Savant values(' + req.body.ID + ', ' + req.body.favoriteGenre + ', ' + req.body.location + ', ' + req.body.name + ', ' + req.body.name + ');'
   tmpUserData = sql;
   res.sendFile(__dirname + "/views/pages/U_Favorites_loaded.html");
 });
