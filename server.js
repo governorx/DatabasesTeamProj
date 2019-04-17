@@ -187,7 +187,7 @@ app.post('/VENUES', urlencodedParser, function (req, res, next) {
 //REPLACE THE SQL CALLS IN THIS WITH ONES TO ADD A FAVORITE RELATION
 app.post('/Singles', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
-  var sql = 'Select * from favorites join Band join Savant where favorites.bid = Band.Bid and favorites.sid = Savant.SID and Savant.SNAME LIKE "' + req.body.name + '%";'
+  var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);'
   console.log("sending favorite");
   con.connect(function(err) {
     if (err) console.log(err);
@@ -202,7 +202,8 @@ app.post('/Singles', urlencodedParser, function (req, res, next) {
 });
 app.post('/Bands', urlencodedParser, function (req, res, next) {
   //replace command  with the one to get the fav bands, and then uncomment both lines
-  var sql = 'Select * from favorites join Band join Savant where favorites.bid = Band.Bid and favorites.sid = Savant.SID and Savant.SNAME LIKE "' + req.body.name + '%";'
+  var sql = 'Insert into favorites values((Select SID from Savant where Savant.Sname like "' + req.body.name + '%"), (Select Bid from Band where Band.Bname like "' + req.body.artist + '%"), 1);'
+
   console.log("sending favorite");
   con.connect(function(err) {
     if (err) console.log(err);
